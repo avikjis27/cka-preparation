@@ -1,6 +1,7 @@
 # Certified Kubernetes Administrators Certification
 
 https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+https://kubernetes.io/docs/tasks/
 
 
 ```
@@ -41,3 +42,25 @@ echo "[[ $commands[kubectl] ]] && source <(kubectl completion zsh)" >> ~/.zshrc 
 - `k expose pod nginx --type=NodePort --port=80 --target-port=80 --dry-run=client -o yaml`
 - `k expose pod nginx --type=LoadBalancer --port=80 --target-port=80`
 - `k create deploy nginx --image=nginx  --replicas=3  --port=80 --dry-run=client -o yaml`
+
+## Chapter Scheduling
+
+### Documentation links
+
+- https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
+- https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
+- https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
+- https://kubernetes.io/docs/tasks/extend-kubernetes/configure-multiple-schedulers/#:~:text=Specify%20schedulers%20for%20pods,scheduler%20in%20that%20pod%20spec.
+
+### Resources
+![Different labels in replicaset](resources/scheduler/rs-labels.png)
+
+
+- `k get pods --selector env=dev`
+- `k get all --selector env=dev` # Doesnt show the replicaset
+- `k get pod --selector env=prod,bu=finance,tier=frontend`
+- `k taint node nodename key=value:taint-effect` #taint-effect: NoSchedule, NoExecute, PreferNoSchedule
+No such imperative command for pod toleration
+- `k label nodes node1 size=large` # Drawback Single label or selector is possible
+
+## Chapter logging and monitoring
