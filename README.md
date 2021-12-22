@@ -64,3 +64,24 @@ No such imperative command for pod toleration
 - `k label nodes node1 size=large` # Drawback Single label or selector is possible
 
 ## Chapter logging and monitoring
+
+
+## Application life cycle management
+### Resources
+![Docker vs Kubernetes command](resources/lifecycle-management/command.png)
+### Documentation links
+- [Deployment Strategies](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+- [Config maps](https://kubernetes.io/docs/concepts/configuration/configmap/)
+- [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
+
+- `k rollout status deployment/my-deployment`
+- `k rollout history deployment/my-deployment`
+- `k rollout undo deployment/my-deployment`
+- `k set image deployment/frontend simple-webapp=kodekloud/webapp-color:v2`
+- `k create configmap test --from-literal=APP_COLOR=blue --from-literal=APP_FONT=serif`
+- `k create secret generic dbcred --from-literal=DB_PASS=pass --from-literal=DB_HOST=mysql`
+- `k create configmap test --from-file=config.properties`
+- `k create secret generic dbcred --from-file=secret.properties`
+- `k explain pod.yaml --recursive| less`
+
+Understand different types of secrets like kubernetes.io/service-account-token
